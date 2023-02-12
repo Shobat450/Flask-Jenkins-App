@@ -26,10 +26,10 @@ pipeline {
 
         stage("SSH to Remote Host") {
             steps {
-stage("SSH to Remote Host") {
-    steps {
-        sshagent(credentials: ['myid']) {
-            sh "ssh -o StrictHostKeyChecking=no ubuntu@44.211.205.183 '$(aws ecr get-login-password --region us-east-1) && docker pull 334604350470.dkr.ecr.us-east-1.amazonaws.com/myflaskapp:latest && docker run -d -p 5000:5000 334604350470.dkr.ecr.us-east-1.amazonaws.com/myflaskapp:latest'"
+                sshagent(credentials: ['myid']) {
+                    sh "ssh -o StrictHostKeyChecking=no ubuntu@44.211.205.183 'docker pull 334604350470.dkr.ecr.us-east-1.amazonaws.com/myflaskapp:latest && docker run -d -p 5000:5000 334604350470.dkr.ecr.us-east-1.amazonaws.com/myflaskapp:latest'"
+                }
+            }
         }
     }
 }
